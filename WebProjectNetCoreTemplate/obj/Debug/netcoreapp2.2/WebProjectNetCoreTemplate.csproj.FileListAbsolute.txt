@@ -1,0 +1,3 @@
+C:\Users\kadriye.taylan\Desktop\WebProjectNetCoreTemplate\WebProjectNetCoreTemplate\obj\Debug\netcoreapp2.2\WebProjectNetCoreTemplate.csproj.CoreCompileInputs.cache
+C:\Users\kadriye.taylan\Desktop\WebProjectNetCoreTemplate\WebProjectNetCoreTemplate\obj\Debug\netcoreapp2.2\WebProjectNetCoreTemplate.AssemblyInfoInputs.cache
+C:\Users\kadriye.taylan\Desktop\WebProjectNetCoreTemplate\WebProjectNetCoreTemplate\obj\Debug\netcoreapp2.2\WebProjectNetCoreTemplate.AssemblyInfo.cs
