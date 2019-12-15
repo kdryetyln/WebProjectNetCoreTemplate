@@ -16,15 +16,13 @@ workflows:
              name: Build App
              command:
                dotnet build
-         - aws-ecr/build_and_push_image:
-            account-url: "392572396998.dkr.ecr.eu-west-1.amazonaws.com"
-            repo: "kt-netcoreweb"
-            region: eu-west-1
-            tag: "v1"
-         - aws-ecs/deploy-service-update:
-            requires:
-                - aws-ecr/build_and_push_image
-            aws-region: eu-west-1
-            family: "netcoreweb-service"
-            cluster-name: "ecs-netcoreweb-cluster"
-            container-image-name-updates: "container=netcoreweb-service,tag=v1"
+         - deploy-service-update:
+             requires:
+                account-url: "392572396998.dkr.ecr.eu-west-1.amazonaws.com"
+                repo: "kt-netcoreweb"
+                region: eu-west-1
+                tag: "v1"
+             aws-region: eu-west-1
+             family: "netcoreweb-service"
+             cluster-name: "ecs-netcoreweb-cluster"
+             container-image-name-updates: "container=netcoreweb-service,tag=v1"
