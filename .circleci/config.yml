@@ -1,28 +1,32 @@
 version: 2.1
 orbs:
   aws-ecs: circleci/aws-ecs@0.0.8
-workflows:
-  build-and-deploy:
-    jobs:
-       docker:
-         - image: mcr.microsoft.com/dotnet/core/sdk:2.2
-       steps:
-         - checkout
-         - run:
-             name: Restore packages
-             command:
-               dotnet restore
-         - run:
-             name: Build App
-             command:
-               dotnet build
-         - deploy-service-update:
-             requires:
-                account-url: "392572396998.dkr.ecr.eu-west-1.amazonaws.com"
-                repo: "kt-netcoreweb"
-                region: eu-west-1
-                tag: "v1"
-             aws-region: eu-west-1
-             family: "netcoreweb-service"
-             cluster-name: "ecs-netcoreweb-cluster"
-             container-image-name-updates: "container=netcoreweb-service,tag=v1"
+jobs:
+ build:
+   docker:
+     - image: mcr.microsoft.com/dotnet/core/sdk:2.2
+   steps:
+     - checkout
+     - run:
+         name: Restore packages
+         command:
+           dotnet restore
+     - run:
+         name: Build App
+         command:
+           dotnet build
+     - run:
+         name: Run App
+         command:
+           dotnet run
+     - deploy-service-update:
+         requires:
+            account-url: "392572396998.dkr.ecr.eu-west-1.amazonaws.com"
+            repo: "kt-netcoreweb"
+            region: eu-west-1
+            tag: "v1"
+         aws-region: eu-west-1
+         family: "netcoreweb-service"
+         cluster-name: "ecs-netcoreweb-cluster"
+         container-image-name-updates: "container=netcoreweb-service,tag=v1"
+           
